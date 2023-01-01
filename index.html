@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ryverlone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/style.css">
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark rounded-bottom-4 z-1 border-bottom border-2 border-secondary py-3">
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">Logo</a>
+        <button class="navbar-toggler bg-dark-subtle bg-light" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse flex-grow-0 navbar-collapse mt-lg-0 mt-4" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">List Game</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="bg-black py-10 my-5 h-100 w-100">
+      <div class="h-100 w-100 row align-items-center my-lg-0 my-4">
+        <div class="container px-4 px-lg-0">
+          <div class="d-lg-flex align-items-center justify-content-around">
+            <div class="text-white mb-lg-0 mb-5">
+              <h1 class="text-white mb-3">Welcome to Ryverlone Store</h1>
+              <h5>Tempat top up game termurah dan terpercaya</h5>
+            </div>
+            <img class="img-fluid" src="https://placehold.co/300x300"> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-3">
+      <div class="container">
+        <div class="row" x-data="game()" x-init="connect()">
+          <div class="col-12 col-lg-6">
+            <div class="mb-4">
+              <h2>List Game</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-6 col-lg-4 mb-3">
+                <div class="card">
+                  <img class="img-fluid card-img-top" src="https://placehold.co/100x100"> 
+                  <div class="card-body p-2">
+                    
+                    <h6 class="card-title mb-3">Mobile Legends</h6>
+                    <button type="button" class="btn btn-dark btn-sm" @click="buttonGame('ML')">Liat Daftar Menu</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4 mb-3">
+                <div class="card">
+                  <img class="img-fluid card-img-top" src="https://placehold.co/100x100"> 
+                  <div class="card-body p-2">
+                    <h6 class="card-title mb-3">Free Fire</h6>
+                    <button type="button" class="btn btn-dark btn-sm " @click="buttonGame('FF')">Liat Daftar Menu</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4 mb-3">
+                <div class="card">
+                  <img class="img-fluid card-img-top" src="https://placehold.co/100x100"> 
+                  <div class="card-body p-2">
+                    <h6 class="card-title mb-3">Genshin (Coming Soon)</h6>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div x-cloak x-show="dataMenu == 'ML' " class="">
+              <h4 class="mb-4">List Item Mobile Legends</h4>
+              <template x-if="dataMenu == 'ML'">
+                <div class="row">
+                  <template x-for="item in mlPriceList">
+                    <div class="col-4 mb-3">
+                      <div class="card">
+                        <div class="card-body py-2 px-2">
+                          <div class="d-lg-flex text-center align-items-center">
+                            <i class="bi bi-gem me-lg-2 text-primary"></i>
+                            <h5 class="mb-0" x-text="item.diamond"></h5>
+                            <span class="ms-lg-2">Diamond</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+            <div x-cloak x-show="dataMenu == 'FF' " class="">
+              <h4 class="mb-4">List Item Free Fire</h4>
+              <template x-if="dataMenu == 'FF'">
+                <div class="row">
+                  <template x-for="item in ffPriceList">
+                    <div class="col-4 mb-3">
+                      <div class="card">
+                        <div class="card-body py-2 px-2">
+                          <div class="d-lg-flex text-center align-items-center">
+                            <i class="bi bi-gem me-lg-2 text-primary"></i>
+                            <h5 class="mb-0" x-text="item.diamond"></h5>
+                            <span class="ms-lg-2">Diamond</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+
+    <script>
+      function game(){
+        return{
+          dataMenu: 'ML',
+          ffPriceList: [
+            {type: 'diamond', diamond: 5, price: 1000},
+            {type: 'diamond', diamond: 20, price: 3000},
+            {type: 'diamond', diamond: 50, price: 8000},
+            {type: 'diamond', diamond: 70, price: 10000},
+            {type: 'diamond', diamond: 140, price: 20000},
+            {type: 'diamond', diamond: 210, price: 30000},
+            {type: 'diamond', diamond: 280, price: 38000},
+            {type: 'diamond', diamond: 355, price: 48000},
+            {type: 'diamond', diamond: 425, price: 55000},
+            {type: 'diamond', diamond: 495, price: 65000},
+            {type: 'diamond', diamond: 720, price: 93000},
+            {type: 'diamond', diamond: 860, price: 110000},
+            {type: 'diamond', diamond: 1075, price: 138000},
+            {type: 'diamond', diamond: 2000, price: 250000},
+          ],
+          mlPriceList: [
+            {type: 'diamond', diamond: 87, price: 20000},
+            {type: 'diamond', diamond: 172, price: 40000},
+            {type: 'diamond', diamond: 257, price: 60000},
+            {type: 'diamond', diamond: 344, price: 80000},
+            {type: 'diamond', diamond: 429, price: 100000},
+            {type: 'diamond', diamond: 514, price: 120000},
+            {type: 'diamond', diamond: 601, price: 140000},
+            {type: 'diamond', diamond: 706, price: 160000},
+            {type: 'diamond', diamond: 792, price: 180.000},
+            {type: 'diamond', diamond: 878, price: 200.000},
+            {type: 'diamond', diamond: 963, price: 220.000},
+            {type: 'diamond', diamond: 1050, price: 240.000},
+            {type: 'diamond', diamond: 1135, price: 260.000},
+          ],
+          connect(){
+            console.log(this.dataMenu);
+            console.log(this.ffPriceList);
+            console.log(this.mlPriceList);
+          },
+          buttonGame(game){
+            this.dataMenu = game;
+          }
+        }; 
+      }
+    </script>
+  </body>
+</html>
