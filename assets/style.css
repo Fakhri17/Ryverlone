@@ -1,5 +1,10 @@
 [x-cloak] { display: none !important; }
 
+.logo-nav{
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
 
 .py-10{
   padding-top: 5.5rem;
