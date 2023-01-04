@@ -4,6 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ryverlone</title>
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Ryverlone">
+    <meta name="description" content="Tempat top up game termurah dan terpercaya">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ryverlone.store/">
+    <meta property="og:title" content="Ryverlonee">
+    <meta property="og:description" content="Tempat top up game termurah dan terpercaya">
+    <meta property="og:image" content="https://placehold.co/100x100">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ryverlone.store/">
+    <meta property="twitter:title" content="Ryverlonee">
+    <meta property="twitter:description" content="Tempat top up game termurah dan terpercaya">
+    <meta property="twitter:image" content="https://placehold.co/100x100">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/style.css">
@@ -22,27 +40,24 @@
               <a class="nav-link text-light" href="#home">Home</a>
             </li>
             <li class="nav-item  h5 mb-0">
-              <a class="nav-link text-light" href="#listgame">List Game</a>
+              <a class="nav-link text-light" href="#listgame">List Game dan Harga</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <section class="bg-black py-10 my-5 h-100 w-100">
+    <section id="home" class="bg-black py-10 my-5 h-100 w-100">
       <div class="h-100 w-100 row align-items-center my-lg-0 my-4">
         <div class="container px-4 px-lg-0">
-          <div class="d-lg-flex align-items-center justify-content-around">
-            <div class="text-white mb-lg-0 mb-5">
-              <h1 class="text-white mb-3">Welcome to Ryverlone Topup</h1>
-              <h5>Tempat top up game termurah dan terpercaya</h5>
-            </div>
-            <img class="img-fluid" src="https://placehold.co/300x300"> 
+          <div class="text-center text-white py-5">
+            <h1 class="mb-3">Welcome to Ryverlone Topup</h1>
+            <h5>Tempat top up game termurah dan terpercaya</h5>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-5">
+    <section id="listgame" class="py-5">
       <div class="container">
         <div class="row" x-data="game()" x-init="connect()">
           <div class="col-12 col-lg-6">
@@ -63,7 +78,7 @@
               </div>
               <div class="col-6 col-lg-4 mb-3">
                 <div class="card">
-                  <img class="img-fluid card-img-top" src="https://placehold.co/100x100"> 
+                  <img class="img-fluid card-img-top" src="./assets/FF.jfif"> 
                   <div class="card-body p-2">
                     <h6 class="card-title mb-3">Free Fire</h6>
                     <button type="button" class="btn btn-dark btn-sm " @click="buttonGame('FF')">Liat Daftar Menu</button>
@@ -185,9 +200,6 @@
             {type: 'diamond', diamond: 1135, price: 260000},
           ],
           connect(){
-            console.log(this.dataMenu);
-            console.log(this.ffPriceList);
-            console.log(this.mlPriceList);
           },
           buttonGame(game){
             this.dataMenu = game;
