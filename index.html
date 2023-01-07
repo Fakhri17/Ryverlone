@@ -31,6 +31,8 @@
     <meta property="twitter:description" content="Tempat top up game termurah dan terpercaya">
     <meta property="twitter:image" content="https://placehold.co/100x100">
 
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/style.css">
@@ -81,7 +83,7 @@
                   <div class="card-body p-2">
                     
                     <h6 class="card-title mb-3">Mobile Legends</h6>
-                    <button type="button" class="btn btn-dark btn-sm" @click="buttonGame('ML')">Liat Daftar Menu</button>
+                    <a href="#listPrice" class="btn btn-dark btn-sm" @click="buttonGame('ML')">Liat Daftar Menu</a>
                   </div>
                 </div>
               </div>
@@ -90,7 +92,7 @@
                   <img class="img-fluid card-img-top" src="./assets/FF.jfif"> 
                   <div class="card-body p-2">
                     <h6 class="card-title mb-3">Free Fire</h6>
-                    <button type="button" class="btn btn-dark btn-sm " @click="buttonGame('FF')">Liat Daftar Menu</button>
+                    <a href="#listPrice" class="btn btn-dark btn-sm " @click="buttonGame('FF')">Liat Daftar Menu</a>
                   </div>
                 </div>
               </div>
@@ -104,8 +106,8 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-6">
-            <div x-cloak x-show="dataMenu == 'ML' " class="">
+          <div id="listPrice" class="col-12 col-lg-6">
+            <div  x-cloak x-show="dataMenu == 'ML' " class="">
               <h4 class="mb-4">List Item Mobile Legends</h4>
               <template x-if="dataMenu == 'ML'">
                 <div class="row px-lg-0 px-4">
@@ -170,57 +172,10 @@
         <p class="mb-0 text-white">Build With Love ❤️ and Coffe ☕ © 2023 Copyright: Ryverlone</p>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
 
-    <script>
-      function game(){
-        return{
-          dataMenu: 'ML',
-          ffPriceList: [
-            {type: 'diamond', diamond: 5, price: 1000},
-            {type: 'diamond', diamond: 20, price: 3000},
-            {type: 'diamond', diamond: 50, price: 8000},
-            {type: 'diamond', diamond: 70, price: 10000},
-            {type: 'diamond', diamond: 140, price: 20000},
-            {type: 'diamond', diamond: 210, price: 30000},
-            {type: 'diamond', diamond: 280, price: 38000},
-            {type: 'diamond', diamond: 355, price: 48000},
-            {type: 'diamond', diamond: 425, price: 55000},
-            {type: 'diamond', diamond: 495, price: 65000},
-            {type: 'diamond', diamond: 720, price: 93000},
-            {type: 'diamond', diamond: 860, price: 110000},
-            {type: 'diamond', diamond: 1075, price: 138000},
-            {type: 'diamond', diamond: 2000, price: 250000},
-          ],
-          mlPriceList: [
-            {type: 'diamond', diamond: 87, price: 20000},
-            {type: 'diamond', diamond: 172, price: 40000},
-            {type: 'diamond', diamond: 257, price: 60000},
-            {type: 'diamond', diamond: 344, price: 80000},
-            {type: 'diamond', diamond: 429, price: 100000},
-            {type: 'diamond', diamond: 514, price: 120000},
-            {type: 'diamond', diamond: 601, price: 140000},
-            {type: 'diamond', diamond: 706, price: 160000},
-            {type: 'diamond', diamond: 792, price: 180000},
-            {type: 'diamond', diamond: 878, price: 200000},
-            {type: 'diamond', diamond: 963, price: 220000},
-            {type: 'diamond', diamond: 1050, price: 240000},
-            {type: 'diamond', diamond: 1135, price: 260000},
-          ],
-          connect(){
-          },
-          buttonGame(game){
-            this.dataMenu = game;
-          },
-          rupiah(number){
-            return new Intl.NumberFormat("id-ID", {
-              style: "currency",
-              currency: "IDR"
-            }).format(number).split(',')[0];
-          }
-        }; 
-      }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="./assets/script.js"></script>
   </body>
 </html>
